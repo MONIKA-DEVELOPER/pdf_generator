@@ -1,0 +1,71 @@
+<%= form_for(@candidate) do |f| %>
+  <%= render 'shared/error_messages', object: @user %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="">
+        <%= f.label :date %>
+        <%= f.date_field :date, class: 'form-control' %>
+      </div>
+      <div class="">
+        <%= f.label :installment_payment %>
+        <%= f.text_field :installment_payment, class: 'form-control' %>
+      </div>
+      <div class="">
+        <%= f.label :due_date %>
+        <%= f.date_field :due_date, class: 'form-control' %>
+      </div>
+      <div class="">
+        <%= f.label :unit_no %>
+        <%= f.text_field :unit_no, class: 'form-control' %>
+      </div>
+      <div class="">
+        <%= f.label :payment_plan %>
+        <%= f.text_field :payment_plan, class: 'form-control' %>
+      </div>
+      <div class="">
+        <%= f.label :work_stage %>
+        <%= f.text_field :work_stage, class: 'form-control' %>
+      </div>
+      <div class="">
+        <%= f.label :installment_no %>
+        <%= f.text_field :installment_no, class: 'form-control' %>
+      </div>
+  </div>
+  <div class="col-md-6">
+    <div class="">
+      <%= f.label :due_amount %>
+      <%= f.text_field :due_amount, class: 'form-control' %>
+    </div>
+    <div class="">
+      <%= f.label :interest_on_delayed_payment %>
+      <%= f.text_field :interest_on_delayed_payment, class: 'form-control' %>
+    </div>
+    <div class="">
+      <%= f.label :bank_name %>
+      <%= f.text_field :bank_details, class: 'form-control' %>
+    </div>
+    <div class="">
+      <%= f.label :account_no %>
+      <%= f.text_field :account_no, class: 'form-control' %>
+    </div>
+    <div class="">
+      <%= f.label :Ifsc_code %>
+      <%= f.text_field :ifsc_code, class: 'form-control' %>
+    </div>
+    <div class="">
+      <%= f.label :cheque_no %>
+      <%= f.text_field :cheque, class: 'form-control' %>
+    </div>
+    <div class="">
+      <%= f.label :authorized_sign %>
+      <%= f.text_field :authorized_sign, class: 'form-control' %>
+    </div>
+   </div>
+   </div>
+   <div class="button">
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %> </div>
+<% end %>

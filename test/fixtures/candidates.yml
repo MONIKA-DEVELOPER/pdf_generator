@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  date: 2019-06-26
+  installment_payment: 
+  due_date: 2019-06-26
+  unit_no: 
+  payment_plan: MyString
+  work_stage: MyString
+  installment_no: 1
+  cheque: MyString
+  account_no: 
+  ifsc_code: MyString
+  bank_details: MyString
+  authorized_sign: MyString
+
+two:
+  name: MyString
+  date: 2019-06-26
+  installment_payment: 
+  due_date: 2019-06-26
+  unit_no: 
+  payment_plan: MyString
+  work_stage: MyString
+  installment_no: 1
+  cheque: MyString
+  account_no: 
+  ifsc_code: MyString
+  bank_details: MyString
+  authorized_sign: MyString

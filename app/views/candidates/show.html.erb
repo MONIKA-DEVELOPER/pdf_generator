@@ -1,0 +1,114 @@
+<h1 class="text-center">List of All Users</h1>
+<%= link_to 'Add new User', new_path %>
+<table class="table">
+  <thead>
+    <tr>
+    <th>
+      Name
+    </th>
+    <th>
+      Installment Payment
+    </th>
+    <th>
+      Due Date
+    </th>
+    <th>
+      Unit No.
+    </th>
+    <th>
+      Payment Plan
+    </th>
+    <th>
+      Work Stage
+    </th>
+    <th>
+      Installment Number
+    </th>
+    <th>
+      Due Amount
+    </th>
+    <th>
+      Interest On Delayed Payment
+    </th>
+    <th>
+      Cheque No.
+    </th>
+    <th>
+      Account No.
+    </th>
+    <th>
+      IFSC code
+    </th>
+    <th>
+      Bank Details
+    </th>
+    <th>
+      Authorized Sign
+    </th>
+    <th colspan="4">
+      Actions
+    </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @candidates.each do |candidate| %>
+    <tr>
+      <td>
+        <%= candidate.name %>
+      </td>
+      <td>
+        <%= candidate.installment_payment %>
+      </td>
+      <td>
+        <%= candidate.due_date %>
+      </td>
+      <td>
+        <%= candidate.unit_no %>
+      </td>
+      <td>
+        <%= candidate.payment_plan %>
+      </td>
+      <td>
+        <%= candidate.work_stage %>
+      </td>
+      <td>
+        <%= candidate.installment_no %>
+      </td>
+      <td>
+        <%= candidate.due_amount %>
+      </td>
+      <td>
+        <%= candidate.interest_on_delayed_payment %>
+      </td>
+      <td>
+        <%= candidate.cheque %>
+      </td>
+      <td>
+        <%= candidate.account_no %>
+      </td>
+      <td>
+        <%= candidate.ifsc_code %>
+      </td>
+      <td>
+        <%= candidate.bank_details %>
+      </td>
+      <td>
+        <%= candidate.authorized_sign %>
+      </td>
+      <td>
+        <%= link_to 'View' , create_pdf_path(candidate.id) %>
+      </td>
+      <td>
+        <%= link_to 'Edit' , edit_path(candidate.id) %>
+      </td>
+      <td>
+        <%= link_to 'Delete', destroy_path( candidate.id),     method: :delete,
+        data: { confirm: 'Are you sure?' } %>
+      </td>
+      <td>
+        <%= link_to 'Demand Letter PDF' , pdf_path( candidate.id) , :target =>  "_blank" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

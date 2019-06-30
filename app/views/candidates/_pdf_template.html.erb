@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+<meta charset="utf-8" />
+<title>project1</title>
+
+</head>
+
+<body>
+<header>
+	<!-- <img src="pdf1.PNG" alt="front page" width="100%" > -->
+  <%= wicked_pdf_image_tag("#{request.protocol}#{request.host_with_port}/assets/pdf1.PNG" ,style:" width: 100%;" )  %>
+
+</header>
+<form style="font-family:;">
+
+	<section style="margin-top:20px">
+		<!-- <img src="logo.png" height:"236" width:"167" style="float:right;height:60px;width:40px;margin-right:20px;"> -->
+    <%= wicked_pdf_image_tag("#{request.protocol}#{request.host_with_port}/assets/logo.png" , style:"float:right;height:60px;width:40px;margin-right:20px;" )  %>
+    <center><div style="color:#DEB887;margin-top:90px;display:inline-block;"> DEMAND LETTER FOR PAYMENTS DUE</div></center>
+
+	</section>
+	<div style="float:right; margin-top:10px; margin-right:40px;">
+	<span>Date</span><div style="width:130px;border-bottom:1px solid black;margin-left:10px;display:inline-block;"><%=
+  @candidate.date %></div>
+	</div>
+
+	<div style="margin-top:10px;margin-left:60px;">
+	<span>Mr./.Mrs/Ms</span><div style="width:145px;border-bottom:1px solid black;margin-left:10px;display:inline-block;">
+    <%= @candidate.name %>
+     </div><br><br>
+	<div style="width:240px;border-bottom:1px solid black;margin-left:3px;display:inline-block;"></div><br><br><br>
+	<div style="width:240px;border-bottom:1px solid black;margin-left:3px;display:inline-block;margin-bottom:15px;line-height:22px;"></div>
+	</div>
+
+	<div style="margin-top:10px;margin-left:60px;">
+	<div style="display:inline-block; line-height: 22px;margin-bottom:15px;"><b>Reg. Notice of Demand for <div style="width:100px;border-bottom:1px solid black;margin-left:3px;display:inline-block;"><center><%=
+  @candidate.installment_payment %></center></div>    Installment Payment Due on   <div style="width:100px;border-bottom:1px solid black;margin-left:3px;display:inline-block;"><center><%=
+  @candidate.due_date %></center></div>   against
+	your UNIT No 	<div style="width:130px;border-bottom:1px solid black;margin-left:3px;display:inline-block;"><center><%=
+  @candidate.unit_no %></center></div> Studio/Service Apartment/Commercial Shop /Office Space booked in project 'CP.67' </b></div>
+
+
+	</div>
+	<div style="margin-top:10px;margin-left:60px;">
+	<span>Dear Sir/Madam,</span>
+	<div style="display:inline-block;margin-bottom:15px;line-height:22px;">kindly refer your booking for the aforesaid Unit No <div style="width:100px;border-bottom:1px solid black;margin-left:3px;display:inline-block;"><center><%=
+  @candidate.unit_no %></center></div>     as per agreed <div style="width:80px;border-bottom:1px solid black;margin-left:3px;display:inline-block;"><center><%=
+  @candidate.payment_plan %></center></div>
+	         payment plan.</div>
+
+	</div>
+
+	<div style="margin-top:10px;margin-left:60px;">
+	<div style="display:inline-block;line-height:22px; "><b>Work Stage</b>  <div style="width:100px;border-bottom:1px solid black;margin-left:3px;display:inline-block;"><center><%=
+  @candidate.work_stage %></center></div>          <b>   Installment no </b>   <div style="width:100px;border-bottom:1px solid black;margin-left:3px;display:inline-block;"> <center><%=
+  @candidate.installment_no %></center> </div>   <b>   Due.</b>  <div style="width:100px;border-bottom:1px solid black;margin-left:3px;display:inline-block;"><center><%=
+  @candidate.due_amount %></center></div>
+	   the following payment aginst your due installment is as under:</div>
+
+	</div>
+
+	<div style="margin-top:0px;margin-left:60px;">
+	<p style="font-weight:bold; padding-top:50px;">DETAILS OF INSTALLMENT PAYMENT DUE</p>
+	<p style="margin-top:0px;">A. CURRENT DUE</p>
+	<table style="font-weight:normal;border-collapse:collapse;text-align:left;width:75%;" border="1">
+		<thead>
+		<th style="padding:10px;">Sr.No.</th>
+		<th style="padding:10px;">Particulars</th>
+		<th style="padding:10px;">Amount</th>
+
+		</thead>
+		<tbody>
+		<tr><td style="padding:10px;">1.</td><td style="padding:10px;">Amount Due as per Payment Plan</td><td><%=
+    @candidate.due_amount %></td></tr>
+		<tr><td style="padding:10px;">2.</td><td style="padding:10px;">Add applicable GST</td><td><% gst =  @candidate.due_amount * 18/100 %>
+    <%= gst %></td></tr>
+		<tr><td style="padding:10px;">3.</td><td style="padding:10px;"><b>Total Amount Due(A)</b></td><td><% total_amount = gst + @candidate.due_amount %>
+     <%= total_amount %></td></tr>
+
+		</tbody>
+
+	</table>
+
+	</div>
+
+
+	<div style="margin-top:0px;margin-left:60px;">
+
+	<p style="margin-top:0px;">B. ARREARS DUE</p>
+	<table style="font-weight:normal;border-collapse:collapse;text-align:left;width:75%;" border="1" >
+		<thead>
+		<th style="padding:10px;">Sr.No.</th>
+		<th style="padding:10px;">Particulars</th>
+		<th style="padding:10px;">Amount</th>
+
+		</thead>
+		<tbody>
+		<tr><td style="padding:10px;">1.</td><td style="padding:10px;">Amount Due including GST</td><td style="padding:10px;"><%= total_amount %></td></tr>
+		<tr><td style="padding:10px;">2.</td><td style="padding:10px;">Intrest on delayed payment</td><td style="padding:10px;"><%= @candidate.interest_on_delayed_payment %></td></tr>
+		<tr><td style="padding:10px;">3.</td><td style="padding:10px;">Add GST on intrest amount</td><td style="padding:10px;"><% gst_on_interest = @candidate.interest_on_delayed_payment * 18/100 %>
+    <%= gst_on_interest %></td></tr>
+		<tr><td style="padding:10px;">4.</td><td style="padding:10px;"><b>Total amount of arrears (B)</b></td><td style="padding:10px;"><% b = total_amount + @candidate.interest_on_delayed_payment + gst_on_interest %>
+    <%= b %></td></tr>
+		</tbody>
+
+	</table>
+
+
+	<p style="display:inline-block;">TOTAL AMOUNT OF ARREARS & CURRENT DUE(A+B) Rs<div style="width:140px;border-bottom:1px solid black;margin-left:3px;display:inline-block;"><center>3515220</center></div></div></p>
+	</div>
+
+
+	<section style="margin-top:150px">
+		<!-- <img src="logo.png" height:"236" width:"167" style="float:right;height:60px;width:40px;margin-right:20px;"> -->
+    <%= wicked_pdf_image_tag("#{request.protocol}#{request.host_with_port}/assets/logo.png" , style:"float:right;height:60px;width:40px;margin-right:20px;" )  %>
+		<center><div style="color:#DEB887;margin-top:90px;display:inline-block;"> DEMAND LETTER FOR PAYMENTS DUE</div></center>
+
+	</section>
+	<div style="margin-top:10px;margin-left:60px;">
+	you are hereby,requested to kindlay arrange to deposite the said DUE amount with seven days from the<br>
+	date of demand letter to avoid applicable intrest charges.<br>
+	payments to bedrawn in favor of:
+
+	<table style="margin-top:40px; ">
+	<tr><td>Cheque/DD/NEFTRTGS.</td><td>:</td><td style="padding-left:10px;"><%=
+  @candidate.cheque %></td></tr>
+	<tr><td>Bank Account No.</td><td>:</td><td style="padding-left:10px;"><%=
+  @candidate.account_no%></td></tr>
+	<tr><td>IFCS Code for NEFT/RTGS</td><td>:</td><td style="padding-left:10px;"><%=
+  @candidate.ifsc_code %></td></tr>
+	<tr><td>Bank Branch details</td><td>:</td><td style="padding-left:10px;"><%=
+  @candidate.bank_details %></td></tr>
+
+	</table>
+	<p>Assuring you of our best services at all times for mutual benifits,</p>
+	<p>Thanking you,</p>
+
+
+	<p style="display:inline-block;">(<div style="width:130px;border-bottom:1px solid black;margin-left:3px;display:inline-block;"><center><%=
+  @candidate.authorized_sign %></center></div>)</p>
+	<p> Authorised Signatory</p>
+	<p>AB ALCOBEV PVT. LTD.</p>
+
+	<p>-In case of any query you may contact us at e-mail at info@cp67.co.in <br>
+	   -In case of payment aleready made,pls send details to reconcile & update accounts.<br>
+	   -Intrest on delayed payments will be charged @18% pa,as perterms of the application 	/allotment,time<br>
+	   being essence of the contract.
+	</p>
+	</div><br>
+	</form>
+
+<footer >
+<!-- <img src="pdf2.PNG" alt="DESCRIPTION" width="100%"> -->
+<%= wicked_pdf_image_tag("#{request.protocol}#{request.host_with_port}/assets/pdf2.PNG" ,style:" width: 100%;" )  %>
+</footer>
+
+</body>
+
+</html>
